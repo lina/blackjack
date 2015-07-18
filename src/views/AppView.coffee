@@ -23,8 +23,10 @@ class window.AppView extends Backbone.View
 
   initialize: ->
     @render()
-    @model.gameEnd = (winner) ->
-      alert ("#{winner} won")
+    @model.gameEnd = (winner) =>
+      @render()
+      setTimeout((-> alert ("#{winner} won") )
+        ,50);
 
   render: ->
     @$el.children().detach()
