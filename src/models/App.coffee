@@ -19,9 +19,15 @@ class window.App extends Backbone.Model
         window.dealer = dealerHand;
         `
         dealerHand
+        
+        dealerBestHand = dealerHand.getBestHand()
+        playerBestHand = playerHand.getBestHand()
+        if dealerBestHand == playerBestHand then @gameEnd('dealer')
+        if dealerBestHand <= 21 and playerBestHand <= 21
+          if dealerBestHand > playerBestHand then @gameEnd('dealer') else @gameEnd('player')
+        else
+          if dealerBestHand < playerBestHand then @gameEnd('dealer') else @gameEnd('player')
 
-    if(window.player.scores() > 21) {
-      alert("You lost!")
-    } else {
-      
-    }
+    @get ('playerHand')
+      .on 'lose', () =>
+        @gameEnd('dealer')

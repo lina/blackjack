@@ -15,6 +15,5 @@ describe 'deck', ->
       assert.strictEqual deck.length, 49
 
   describe 'stand', ->
-    it 'should trigger an event stand', 
-    -> 
-      
+    it 'should trigger an event stand', ->
+       

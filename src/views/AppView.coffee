@@ -11,10 +11,11 @@ class window.AppView extends Backbone.View
 
   initialize: ->
     @render()
+    @model.gameEnd = (winner) ->
+      alert ("#{winner} won")
 
   render: ->
     @$el.children().detach()
     @$el.html @template()
     @$('.player-hand-container').html new HandView(collection: @model.get 'playerHand').el
     @$('.dealer-hand-container').html new HandView(collection: @model.get 'dealerHand').el
-
